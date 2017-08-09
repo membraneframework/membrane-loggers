@@ -5,7 +5,7 @@ defmodule Membrane.Loggers.Console do
   """
 
 
-  use Membrane.Logger.Base
+  use Membrane.Log.Logger.Base
   alias Membrane.Loggers.ConsoleNative
 
 
