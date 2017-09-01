@@ -10,8 +10,8 @@ defmodule Membrane.Loggers.Console do
 
 
 
-  def handle_log(level, msg, timestamp, _tags, state) do
-    with :ok <- ConsoleNative.log_prefix(level, timestamp),
+  def handle_log(level, msg, timestamp, tags, state) do
+    with :ok <- ConsoleNative.log_prefix(level, timestamp, tags),
           :ok <- handle_elem(msg),
           :ok <- ConsoleNative.log_sufix
     do
