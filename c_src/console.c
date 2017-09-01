@@ -13,7 +13,7 @@
 
 #define KGRN  "\x1B[32m"
 #define KYEL  "\x1B[33m"
-#define KBLU  "\x1B[34m"
+#define KCYA  "\x1B[36m"
 #define KWHT  "\x1B[37m"
 
 
@@ -33,7 +33,7 @@ static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int arg, const ERL_NIF_TER
   }
 
   if(!strcmp(level_atom_buf, "debug")) {
-    printf("%ld [debug] %s", timestamp, KBLU);
+    printf("%ld [debug] %s", timestamp, KCYA);
   } else if(!strcmp(level_atom_buf, "info")) {
     printf("%ld [info] %s", timestamp, KGRN);
   } else if(!strcmp(level_atom_buf, "warn")){
