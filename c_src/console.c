@@ -28,7 +28,7 @@ static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int arg, const ERL_NIF_TER
 
   MEMBRANE_UTIL_PARSE_ATOM_ARG(0, level_atom_buf, MAX_LEVEL_ATOM_LEN)
 
-  if(!enif_get_long(env, argv[2], &timestamp)) {
+  if(!enif_get_long(env, argv[1], &timestamp)) {
     return membrane_util_make_error_args(env, "timestamp", "Passed timestamp is not a valid long");
   }
 
