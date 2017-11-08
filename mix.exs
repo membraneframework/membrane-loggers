@@ -28,7 +28,7 @@ defmodule Membrane.Loggers.Mixfile do
 
   defp deps do
     [
-      {:membrane_core, git: "git@github.com:membraneframework/membrane-core.git"},
+      {:membrane_core, git: "git@github.com:membraneframework/membrane-core.git", branch: "v0.1"},
       {:espec, "~> 1.1.2", only: :test},
       {:bundlex, git: "git@github.com:radiokit/bundlex.git"},
       {:membrane_common_c, git: "git@github.com:membraneframework/membrane-common-c.git"},
