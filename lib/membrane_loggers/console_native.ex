@@ -12,7 +12,7 @@ defmodule Membrane.Loggers.ConsoleNative do
 
   def log_text(_text), do: raise "NIF fail"
   def log_number(_text), do: raise "NIF fail"
-  def log_prefix(_level, _timestamp, _tags), do: raise "NIF fail"
+  def log_prefix(_level, _time, _tags), do: raise "NIF fail"
   def log_sufix(), do: raise "NIF fail"
   def log_binary(_binary), do: raise "NIF fail"
 end

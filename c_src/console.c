@@ -28,11 +28,11 @@ int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info) {
 }
 
 static char* format_tags(ErlNifEnv *env, ERL_NIF_TERM tags) {
- 
+
   size_t output_len = 0;
   unsigned tags_len;
-   
-  // check if tags is a valid list 
+
+  // check if tags is a valid list
   if(!enif_get_list_length(env, tags, &tags_len)) {
     return NULL;
   }
@@ -50,11 +50,11 @@ static char* format_tags(ErlNifEnv *env, ERL_NIF_TERM tags) {
   }
 
   // alocate memory for output string
-  char *output = enif_alloc(output_len); 
+  char *output = enif_alloc(output_len);
   char *output_it = output;
 
   list = tags;
-  
+
   // fill allocated memomory with tags
   while(enif_get_list_cell(env, list, &cell, &list)) {
     int atom_len;
@@ -63,40 +63,36 @@ static char* format_tags(ErlNifEnv *env, ERL_NIF_TERM tags) {
     if(atom_len <= 0) {
       return NULL;
     }
-     
+
     // replace NULL-byte with space
     *(output_it-1) = ' ';
   }
-  
+
   *(output_it-1) = 0;
 
   return output;
 }
 
-
 static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 {
   UNUSED(argc);
-  long timestamp;
 
-  MEMBRANE_UTIL_PARSE_ATOM_ARG(0, level_atom_buf, MAX_LEVEL_ATOM_LEN)
+  MEMBRANE_UTIL_PARSE_ATOM_ARG(0, level, MAX_LEVEL_ATOM_LEN)
 
-  if(!enif_get_long(env, argv[1], &timestamp)) {
-    return membrane_util_make_error_args(env, "timestamp", "Passed timestamp is not a valid long");
-  }
-  
+  MEMBRANE_UTIL_PARSE_BINARY_ARG(1, time)
+
   char *tags_string = format_tags(env, argv[2]);
 
   if(!tags_string) {
     return membrane_util_make_error_args(env, "tags", "Passed 'tag list' is not a valid list with atoms");
   }
 
-  if(!strcmp(level_atom_buf, "debug")) {
-    printf("%s%ld [debug] [%s] ", KCYA, timestamp, tags_string);
-  } else if(!strcmp(level_atom_buf, "info")) {
-    printf("%s%ld [info] [%s] ", KGRN, timestamp, tags_string);
-  } else if(!strcmp(level_atom_buf, "warn")){
-    printf("%s%ld [warn] [%s] ", KYEL, timestamp, tags_string);
+  if(!strcmp(level, "debug")) {
+    printf("%s%.*s [debug] [%s] ", KCYA, (int)time.size, time.data, tags_string);
+  } else if(!strcmp(level, "info")) {
+    printf("%s%.*s [info] [%s] ", KGRN, (int)time.size, time.data, tags_string);
+  } else if(!strcmp(level, "warn")){
+    printf("%s%.*s [warn] [%s] ", KYEL, (int)time.size, time.data, tags_string);
   } else {
     return membrane_util_make_error_args(env, "level", "Should be one of :debug, :info, :warn");
   }
