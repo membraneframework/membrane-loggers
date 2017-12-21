@@ -10,6 +10,6 @@ defmodule Membrane.Loggers do
 
     opts = [strategy: :one_for_one, name: Membrane.Loggers]
 
-    supervise(children, opts)
+    Supervisor.start_link(children, opts)
   end
 end
