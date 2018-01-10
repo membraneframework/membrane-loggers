@@ -18,7 +18,7 @@ defmodule Membrane.Loggers.Mixfile do
 
 
   def application do
-    [applications: [], mod: {Membrane.Loggers, []}]
+    [extra_applications: [], mod: {Membrane.Loggers, []}]
   end
 
 
