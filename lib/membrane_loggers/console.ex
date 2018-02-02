@@ -11,7 +11,7 @@ defmodule Membrane.Loggers.Console do
 
 
   def handle_log(level, msg, time, tags, state) do
-    with :ok <- ConsoleNative.log_prefix(level, time, tags),
+    with :ok <- ConsoleNative.log_prefix(level, "#{time}", tags),
           :ok <- handle_elem(msg),
           :ok <- ConsoleNative.log_sufix
     do
@@ -36,13 +36,8 @@ defmodule Membrane.Loggers.Console do
     end
   end
 
-  defp handle_elem(elem) when is_tuple(elem) do
-    case elem do
-      {:binary, binary} ->
-        ConsoleNative.log_binary(binary)
-      _ ->
-        {:error, :not_implemented}
-    end
+  defp handle_elem({:binary, binary}) do
+    ConsoleNative.log_binary(binary)
   end
 
   defp handle_elem(elem) when is_number(elem) do
@@ -52,4 +47,9 @@ defmodule Membrane.Loggers.Console do
   defp handle_elem(elem) when is_binary(elem) do
     ConsoleNative.log_text elem
   end
+
+  defp handle_elem(elem) do
+    {:error, :console_log, not_implemented_for: elem}
+  end
+
 end
