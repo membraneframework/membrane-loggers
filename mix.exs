@@ -1,9 +1,10 @@
 defmodule Membrane.Loggers.Mixfile do
   use Mix.Project
+  Application.put_env(:bundlex, :membrane_loggers, __ENV__)
 
   def project do
     [app: :membrane_loggers,
-     compilers: ["bundlex.lib"] ++ Mix.compilers,
+     compilers: [:bundlex] ++ Mix.compilers,
      version: "0.0.1",
      elixir: "~> 1.3",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -28,7 +29,7 @@ defmodule Membrane.Loggers.Mixfile do
 
   defp deps do
     [
-      {:membrane_core, git: "git@github.com:membraneframework/membrane-core.git", branch: "v0.1"},
+      {:membrane_core, git: "git@github.com:membraneframework/membrane-core.git"},
       {:espec, "~> 1.1.2", only: :test},
       {:bundlex, git: "git@github.com:radiokit/bundlex.git"},
       {:membrane_common_c, git: "git@github.com:membraneframework/membrane-common-c.git"},

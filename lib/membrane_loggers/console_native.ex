@@ -1,18 +1,9 @@
-defmodule Membrane.Loggers.ConsoleNative do
-  @moduledoc """
-  """
-  require Bundlex.Loader
+defmodule Membrane.Loggers.Console.Native do
+  use Bundlex.Loader, nif: :console
 
-  @on_load :load_nifs
-
-  @doc false
-  def load_nifs do
-    Bundlex.Loader.load_lib_nif!(:membrane_loggers, :membrane_loggers_console)
-  end
-
-  def log_text(_text), do: raise "NIF fail"
-  def log_number(_text), do: raise "NIF fail"
-  def log_prefix(_level, _time, _tags), do: raise "NIF fail"
-  def log_sufix(), do: raise "NIF fail"
-  def log_binary(_binary), do: raise "NIF fail"
+  defnif log_text(text)
+  defnif log_number(text)
+  defnif log_prefix(level, time, tags)
+  defnif log_sufix()
+  defnif log_binary(binary)
 end

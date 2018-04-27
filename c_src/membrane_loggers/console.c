@@ -171,4 +171,4 @@ static ErlNifFunc nif_funcs[] =
   {"log_binary", 1, export_log_binary, 0}
 };
 
-ERL_NIF_INIT(Elixir.Membrane.Loggers.ConsoleNative, nif_funcs, load, NULL, NULL, NULL)
+ERL_NIF_INIT(Elixir.Membrane.Loggers.Console.Native.Nif, nif_funcs, load, NULL, NULL, NULL)
