@@ -14,7 +14,6 @@ defmodule Membrane.Loggers.Mixfile do
       licenses: ["Proprietary"],
       name: "Membrane Loggers",
       source_url: "https://github.com/membraneframework/membrane-loggers",
-      preferred_cli_env: [espec: :test],
       deps: deps()
     ]
   end
@@ -29,7 +28,6 @@ defmodule Membrane.Loggers.Mixfile do
   defp deps do
     [
       {:membrane_core, git: "git@github.com:membraneframework/membrane-core.git"},
-      {:espec, "~> 1.1.2", only: :test},
       {:bundlex, git: "git@github.com:radiokit/bundlex.git"},
       {:membrane_common_c, git: "git@github.com:membraneframework/membrane-common-c.git"}
     ]
