@@ -11,7 +11,7 @@ defmodule Membrane.Loggers.Mixfile do
       elixirc_paths: elixirc_paths(Mix.env()),
       description: "Membrane Multimedia Framework (Loggers)",
       maintainers: ["Mateusz Nowak"],
-      licenses: ["Proprietary"],
+      licenses: ["Apache 2.0"],
       name: "Membrane Loggers",
       source_url: "https://github.com/membraneframework/membrane-loggers",
       deps: deps()
