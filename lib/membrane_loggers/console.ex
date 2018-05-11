@@ -4,52 +4,45 @@ defmodule Membrane.Loggers.Console do
   print messages to console.
   """
 
-
   use Membrane.Log.Logger.Base
-  alias Membrane.Loggers.ConsoleNative
-
-
+  alias __MODULE__.Native
 
   def handle_log(level, msg, time, tags, state) do
-    with :ok <- ConsoleNative.log_prefix(level, "#{time}", tags),
-          :ok <- handle_elem(msg),
-          :ok <- ConsoleNative.log_sufix
-    do
-       {:ok, state}
+    with :ok <- Native.log_prefix(level, "#{time}", tags),
+         :ok <- handle_elem(msg),
+         :ok <- Native.log_sufix() do
+      {:ok, state}
     else
-       {:error, reason} ->
-         {:error, reason, state}
+      {:error, reason} ->
+        {:error, reason, state}
     end
   end
 
-
-
   defp handle_elem([]), do: :ok
 
-  defp handle_elem(elem) when is_list(elem) do
-    [head | tail] = elem
+  defp handle_elem([head | tail]) do
     case handle_elem(head) do
       :ok ->
         handle_elem(tail)
+
       other ->
         other
     end
   end
 
   defp handle_elem({:binary, binary}) do
-    ConsoleNative.log_binary(binary)
+    Native.log_binary(binary)
   end
 
   defp handle_elem(elem) when is_number(elem) do
-    ConsoleNative.log_number elem
+    Native.log_number(elem)
   end
 
   defp handle_elem(elem) when is_binary(elem) do
-    ConsoleNative.log_text elem
+    Native.log_text(elem)
   end
 
   defp handle_elem(elem) do
-    {:error, :console_log, not_implemented_for: elem}
+    {:error, {:console_log, not_implemented_for: elem}}
   end
-
 end
