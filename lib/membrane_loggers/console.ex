@@ -20,9 +20,7 @@ defmodule Membrane.Loggers.Console do
 
   defp handle_elem([]), do: :ok
 
-  defp handle_elem(elem) when is_list(elem) do
-    [head | tail] = elem
-
+  defp handle_elem([head | tail]) do
     case handle_elem(head) do
       :ok ->
         handle_elem(tail)
@@ -45,6 +43,6 @@ defmodule Membrane.Loggers.Console do
   end
 
   defp handle_elem(elem) do
-    {:error, :console_log, not_implemented_for: elem}
+    {:error, {:console_log, not_implemented_for: elem}}
   end
 end
