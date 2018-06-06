@@ -1,4 +1,5 @@
 defmodule Membrane.Loggers.Console.Native do
+  @moduledoc false
   use Bundlex.Loader, nif: :console
 
   defnif log_text(text)
