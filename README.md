@@ -1,5 +1,9 @@
 # Membrane Framework: Loggers
-Set of different logger backend implementations for [Membrane Multimedia Framework](https://membraneframework.org). Currently the only implementation is `Membrane.Loggers.Console`, printing logs to the standard output.
+
+[![Build Status](https://travis-ci.com/membraneframework/membrane-loggers.svg?branch=master)](https://travis-ci.com/membraneframework/membrane-loggers)
+
+Set of different logger backend implementations for [Membrane Multimedia Framework](https://membraneframework.org).
+Currently the only implementation is `Membrane.Loggers.Console`, printing logs to the standard output.
 
 ## Installation
 
