@@ -1,6 +1,5 @@
 defmodule Membrane.Loggers.Mixfile do
   use Mix.Project
-  Application.put_env(:bundlex, :membrane_loggers, __ENV__)
 
   @github_url "https://github.com/membraneframework/membrane-loggers"
 
@@ -48,18 +47,19 @@ defmodule Membrane.Loggers.Mixfile do
   end
 
   defp docs do
-  [
-    main: "readme",
-    extras: ["README.md"]
-  ]
-end
+    [
+      main: "readme",
+      extras: ["README.md"]
+    ]
+  end
 
   defp deps do
     [
-      {:ex_doc, "~> 0.18", only: :dev, runtime: false},
-      {:membrane_core, "~> 0.1"},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:membrane_core, git: "https://github.com/membraneframework/membrane-core.git"},
       {:bundlex, "~> 0.1"},
-      {:membrane_common_c, "~> 0.1"}
+      {:membrane_common_c, "~> 0.1"},
+      {:bunch_native, "~> 0.1"}
     ]
   end
 end

@@ -10,7 +10,7 @@ defmodule Membrane.Loggers.BundlexProject do
   defp nifs(_platform) do
     [
       console: [
-        deps: [membrane_common_c: :membrane],
+        deps: [membrane_common_c: :membrane, bunch_native: :bunch],
         sources: ["console.c"]
       ]
     ]
