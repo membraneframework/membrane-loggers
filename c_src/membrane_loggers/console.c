@@ -8,13 +8,11 @@
 #define KCYA  "\x1B[36m"
 #define KWHT  "\x1B[37m"
 
-#define UNUSED(x) (void)(x)
-
 
 int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info) {
-  UNUSED(env);
-  UNUSED(priv_data);
-  UNUSED(load_info);
+  BUNCH_UNUSED(env);
+  BUNCH_UNUSED(priv_data);
+  BUNCH_UNUSED(load_info);
   return 0;
 }
 
@@ -66,7 +64,7 @@ static char* format_tags(ErlNifEnv *env, ERL_NIF_TERM tags) {
 
 static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 {
-  UNUSED(argc);
+  BUNCH_UNUSED(argc);
 
   BUNCH_PARSE_ATOM_ARG(0, level, MAX_LEVEL_ATOM_LEN)
 
@@ -96,12 +94,10 @@ static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int argc, const ERL_NIF_TE
 
 static ERL_NIF_TERM export_log_number(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 {
-  UNUSED(argc);
-  long number;
+  BUNCH_UNUSED(argc);
 
-  if(!enif_get_long(env, argv[0], &number)) {
-    return bunch_make_error_args(env, "term_list", "Passed invalid long");
-  }
+  BUNCH_PARSE_LONG_ARG(0, number)
+
   printf("%ld", number);
   return bunch_make_ok(env);
 }
@@ -109,7 +105,7 @@ static ERL_NIF_TERM export_log_number(ErlNifEnv *env, int argc, const ERL_NIF_TE
 
 static ERL_NIF_TERM export_log_text(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 {
-  UNUSED(argc);
+  BUNCH_UNUSED(argc);
 
   BUNCH_PARSE_BINARY_ARG(0, binary)
   printf("%.*s", (int)binary.size, binary.data);
@@ -118,7 +114,7 @@ static ERL_NIF_TERM export_log_text(ErlNifEnv *env, int argc, const ERL_NIF_TERM
 
 static ERL_NIF_TERM export_log_binary(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 {
-  UNUSED(argc);
+  BUNCH_UNUSED(argc);
 
   BUNCH_PARSE_BINARY_ARG(0, binary)
   printf("<<");
@@ -146,8 +142,8 @@ static ERL_NIF_TERM export_log_binary(ErlNifEnv *env, int argc, const ERL_NIF_TE
 
 static ERL_NIF_TERM export_log_sufix(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 {
-  UNUSED(argc);
-  UNUSED(argv);
+  BUNCH_UNUSED(argc);
+  BUNCH_UNUSED(argv);
 
   printf("%s\r\n", KWHT);
   return bunch_make_ok(env);

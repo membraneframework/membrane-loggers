@@ -1,13 +1,14 @@
 defmodule Membrane.Loggers.Mixfile do
   use Mix.Project
 
+  @version "0.1.0"
   @github_url "https://github.com/membraneframework/membrane-loggers"
 
   def project do
     [
       app: :membrane_loggers,
       compilers: [:bundlex] ++ Mix.compilers(),
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.6",
       elixirc_paths: elixirc_paths(Mix.env()),
       description: "Membrane Multimedia Framework (Loggers)",
@@ -49,17 +50,18 @@ defmodule Membrane.Loggers.Mixfile do
   defp docs do
     [
       main: "readme",
-      extras: ["README.md"]
+      extras: ["README.md"],
+      source_ref: "v#{@version}"
     ]
   end
 
   defp deps do
     [
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
-      {:membrane_core, git: "https://github.com/membraneframework/membrane-core.git"},
+      {:membrane_core, github: "membraneframework/membrane-core"},
       {:bundlex, "~> 0.1"},
       {:membrane_common_c, "~> 0.1"},
-      {:bunch_native, "~> 0.1"}
+      {:bunch_native, "~> 0.1.1"}
     ]
   end
 end
