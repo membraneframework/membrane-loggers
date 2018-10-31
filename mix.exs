@@ -60,7 +60,8 @@ defmodule Membrane.Loggers.Mixfile do
       {:ex_doc, "~> 0.19", only: :dev, runtime: false},
       {:membrane_core, github: "membraneframework/membrane-core"},
       {:bundlex, "~> 0.1"},
-      {:membrane_common_c, "~> 0.1"},
+      {:membrane_common_c, github: "membraneframework/membrane-common-c"},
+      {:bunch, github: "membraneframework/bunch", override: true},
       {:bunch_native, "~> 0.1.1"}
     ]
   end
