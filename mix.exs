@@ -1,7 +1,7 @@
 defmodule Membrane.Loggers.Mixfile do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.2.1"
   @github_url "https://github.com/membraneframework/membrane-loggers"
 
   def project do
@@ -59,7 +59,7 @@ defmodule Membrane.Loggers.Mixfile do
     [
       {:ex_doc, "~> 0.19", only: :dev},
       {:membrane_core, "~> 0.2.0"},
-      {:bundlex, "~> 0.1.3"},
+      {:bundlex, "~> 0.1.5"},
       {:membrane_common_c, "~> 0.2.0"},
       {:bunch, "~> 0.1.2"},
       {:bunch_native, "~> 0.1.1"}
