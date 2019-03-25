@@ -1,6 +1,8 @@
 # Membrane Framework: Loggers
 
-[![Build Status](https://travis-ci.com/membraneframework/membrane-loggers.svg?branch=master)](https://travis-ci.com/membraneframework/membrane-loggers)
+[![Hex.pm](https://img.shields.io/hexpm/v/membrane_loggers.svg)](https://hex.pm/packages/membrane_loggers)
+[![API Docs](https://img.shields.io/badge/api-docs-yellow.svg?style=flat)](https://hexdocs.pm/membrane_loggers/)
+[![CircleCI](https://circleci.com/gh/membraneframework/membrane-loggers.svg?style=svg)](https://circleci.com/gh/membraneframework/membrane-loggers)
 
 Set of different logger backend implementations for [Membrane Multimedia Framework](https://membraneframework.org).
 Currently the only implementation is `Membrane.Loggers.Console`, printing logs to the standard output.
