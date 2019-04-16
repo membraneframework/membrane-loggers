@@ -7,6 +7,7 @@ defmodule Membrane.Loggers.Console do
   use Membrane.Log.Logger.Base
   alias __MODULE__.Native
 
+  @impl true
   def handle_log(level, msg, time, tags, state) do
     with :ok <- Native.log_prefix(level, "#{time}", tags),
          :ok <- handle_elem(msg),

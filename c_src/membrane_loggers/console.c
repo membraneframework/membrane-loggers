@@ -1,4 +1,8 @@
-#include "console.h"
+#include <erl_nif.h>
+#include <string.h>
+#include <stdio.h>
+#include <membrane/membrane.h>
+#include <bunch/bunch_nif.h>
 
 #define MAX_LEVEL_ATOM_LEN 10
 #define BINARY_TRUNC_SIZE 30
@@ -73,7 +77,7 @@ static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int argc, const ERL_NIF_TE
   char *tags_string = format_tags(env, argv[2]);
 
   if(!tags_string) {
-    return bunch_make_error_args(env, "tags", "Passed 'tag list' is not a valid list with atoms");
+    return bunch_raise_error_args(env, "tags", "Passed 'tag list' is not a valid list with atoms");
   }
 
   if(!strcmp(level, "debug")) {
@@ -83,7 +87,7 @@ static ERL_NIF_TERM export_log_prefix(ErlNifEnv *env, int argc, const ERL_NIF_TE
   } else if(!strcmp(level, "warn")){
     printf("%s%.*s [warn] [%s] ", KYEL, (int)time.size, time.data, tags_string);
   } else {
-    return bunch_make_error_args(env, "level", "Should be one of :debug, :info, :warn");
+    return bunch_raise_error_args(env, "level", "Should be one of :debug, :info, :warn");
   }
 
   enif_free(tags_string);

@@ -3,14 +3,14 @@ defmodule Membrane.Loggers.BundlexProject do
 
   def project() do
     [
-      nifs: nifs(Bundlex.platform())
+      nifs: nifs()
     ]
   end
 
-  defp nifs(_platform) do
+  defp nifs() do
     [
       console: [
-        deps: [membrane_common_c: :membrane, bunch_native: :bunch],
+        deps: [membrane_common_c: :membrane, bunch_native: :bunch_nif],
         sources: ["console.c"]
       ]
     ]

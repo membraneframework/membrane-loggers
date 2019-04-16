@@ -12,7 +12,7 @@ Currently the only implementation is `Membrane.Loggers.Console`, printing logs t
 Add the following line to your `deps` in `mix.exs`. Run `mix deps.get`.
 
 ```elixir
-{:membrane_loggers, "~> 0.2"}
+{:membrane_loggers, "~> 0.2.0"}
 ```
 
 ## Usage
