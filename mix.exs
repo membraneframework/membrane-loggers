@@ -1,7 +1,7 @@
 defmodule Membrane.Loggers.Mixfile do
   use Mix.Project
 
-  @version "0.2.4"
+  @version "0.2.5"
   @github_url "https://github.com/membraneframework/membrane-loggers"
 
   def project do
