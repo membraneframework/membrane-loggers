@@ -61,7 +61,7 @@ defmodule Membrane.Loggers.Mixfile do
       {:membrane_core, "~> 0.3.0"},
       {:bundlex, "~> 0.2.0"},
       {:membrane_common_c, "~> 0.2.2"},
-      {:bunch_native, "~> 0.1.0"}
+      {:bunch_native, "~> 0.2.0"}
     ]
   end
 end
