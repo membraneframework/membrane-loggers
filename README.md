@@ -17,7 +17,7 @@ Add the following line to your `deps` in `mix.exs`. Run `mix deps.get`.
 
 ## Usage
 
-For information on usage see the [chapter about logger in Membrane guide](https://membraneframework.org/guide/chapter2/logger.html)
+For information on usage see the [chapter about logger in Membrane guide](https://www.membraneframework.org/guide/v0.3/logger.html)
 
 Documentation is available at [HexDocs](https://hexdocs.pm/membrane_element_portaudio/)
 
